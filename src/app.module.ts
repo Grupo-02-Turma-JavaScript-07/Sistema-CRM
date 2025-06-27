@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { Categoria } from './categoria/entities/categoria.entity';
+import { CategoriaModule } from './categoria/categoria.module';
 
 @Module({
   imports: [
@@ -11,9 +13,10 @@ import { AppService } from './app.service';
       username: 'root',
       password: 'root',
       database: 'db_crm',
-      entities: [],
+      entities: [Categoria],
       synchronize: true,
     }),
+    CategoriaModule
     // NomeModule,
   ],
   controllers: [AppController],
