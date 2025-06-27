@@ -6,8 +6,8 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Usuario } from '../usuario/usuario.entity';
-import { Categoria } from '../categoria/categoria.entity';
+import { Usuario } from 'src/usuario/entities/usuario.entity';
+import { Categoria } from 'src/categoria/entities/categoria.entity';
 
 @Entity('tb_produtos')
 export class Produto {

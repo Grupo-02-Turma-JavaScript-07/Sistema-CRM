@@ -7,7 +7,7 @@ import { Categoria } from './categoria/entities/categoria.entity';
 import { Usuario } from './usuario/entities/usuario.entity';
 import { ProdutoModule } from './produto/produto.module';
 import { CategoriaModule } from './categoria/categoria.module';
-import { Usuario } from './usuario/usuario.module';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
   imports: [
