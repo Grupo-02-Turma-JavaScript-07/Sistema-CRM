@@ -7,10 +7,10 @@ import { DeleteResult, ILike, Repository } from 'typeorm';
 export class ProdutoService {
   constructor(
     @InjectRepository(Produto)
-    private produtoRepository: Promise<Produto>,
+    private produtoRepository: Repository<Produto>,
   ) {}
 
-  findAll(): Promise<Produto[]> {
+  async findAll(): Promise<Produto[]> {
     return await this.produtoRepository.find();
   }
 
