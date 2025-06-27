@@ -2,8 +2,7 @@ import { IsNotEmpty } from 'class-validator';
 import {
   Column,
   Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
+  PrimaryGeneratedColumn
 } from 'typeorm';
 
 @Entity({ name: 'tb_categoria' })
@@ -14,7 +13,4 @@ export class Categoria {
   @IsNotEmpty()
   @Column({ length: 255, nullable: false })
   descricao: string;
-
-  @UpdateDateColumn()
-  dataAtualizacao: Date;
 }
