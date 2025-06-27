@@ -1,9 +1,13 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { Produto } from './produto/entities/produto.entity';
+import { Categoria } from './categoria/entities/categoria.entity';
 import { Usuario } from './usuario/entities/usuario.entity';
-import { UsuarioModule } from './usuario/usuario.module';
+import { ProdutoModule } from './produto/produto.module';
+import { CategoriaModule } from './categoria/categoria.module';
+import { Usuario } from './usuario/usuario.module';
 
 @Module({
   imports: [
@@ -14,10 +18,11 @@ import { UsuarioModule } from './usuario/usuario.module';
       username: 'root',
       password: 'root',
       database: 'db_crm',
-      entities: [Usuario],
+      entities: [Categoria, Produto, Usuario],
       synchronize: true,
     }),
-    // NomeModule,
+    CategoriaModule,
+    ProdutoModule,
     UsuarioModule,
   ],
   controllers: [AppController],
