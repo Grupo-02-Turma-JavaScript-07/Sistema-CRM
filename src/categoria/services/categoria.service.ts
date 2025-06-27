@@ -19,6 +19,9 @@ export class CategoriaService {
       where: {
         id,
       },
+      relations: {
+        produtos: true,
+      },
     });
 
     if (!categoria) {
