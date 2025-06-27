@@ -1,12 +1,13 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { BadRequestException, HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Produto } from '../entities/produto.entity';
-import { DeleteResult, ILike, Repository } from 'typeorm';
+import { Between, DeleteResult, ILike, Repository } from 'typeorm';
 import { CategoriaService } from '../../categoria/services/categoria.service';
 import { UsuarioService } from '../../usuario/services/usuario.service';
 
 @Injectable()
 export class ProdutoService {
+
   constructor(
     @InjectRepository(Produto)
     private produtoRepository: Repository<Produto>,
@@ -36,6 +37,28 @@ export class ProdutoService {
         nome: ILike(`%${nome}%`),
       },
     });
+  }
+
+  async findEntrePrecos(precoMin: number, precoMax: number) {
+    if (precoMin > precoMax) {
+      throw new BadRequestException('Preço mínimo não pode ser maior que a preço máximo');
+    }
+
+    const produtos = await this.produtoRepository.find({
+      where: {
+        preco: Between(precoMin, precoMax)
+      },
+      relations: {
+        categoria: true,
+        usuario: true
+      }
+    });
+
+    if (!produtos) {
+      throw new HttpException('Produtos não encontrados', HttpStatus.NOT_FOUND);
+    }
+
+    return produtos;
   }
 
   async create(produto: Produto): Promise<Produto> {
