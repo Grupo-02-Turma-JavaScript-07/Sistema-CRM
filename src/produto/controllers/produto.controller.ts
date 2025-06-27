@@ -6,6 +6,7 @@ import {
   HttpCode,
   HttpStatus,
   Param,
+  ParseFloatPipe,
   ParseIntPipe,
   Post,
   Put,
@@ -33,6 +34,15 @@ export class ProdutoController {
   @HttpCode(HttpStatus.OK)
   findByName(@Param('nome') nome: string): Promise<Produto[]> {
     return this.produtoService.findByName(nome);
+  }
+
+  @Get('/faixaPrecos/:precoMinimo/:precoMaximo')
+  @HttpCode(HttpStatus.OK)
+  findEntrePrecos(
+    @Param('precoMinimo', ParseFloatPipe) precoMinimo: number,
+    @Param('precoMaximo', ParseFloatPipe) precoMaximo: number
+  ): Promise<Produto[]> {
+    return this.produtoService.findEntrePrecos(precoMinimo, precoMaximo);
   }
 
   @Post()
