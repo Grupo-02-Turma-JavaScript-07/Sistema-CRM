@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Usuario } from './usuario/entities/usuario.entity';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
   imports: [
@@ -10,12 +12,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '1234',
+      password: 'root',
       database: 'db_crm',
-      entities: [],
+      entities: [Usuario],
       synchronize: true,
     }),
     // NomeModule,
+    UsuarioModule,
   ],
   controllers: [AppController],
   providers: [AppService],
