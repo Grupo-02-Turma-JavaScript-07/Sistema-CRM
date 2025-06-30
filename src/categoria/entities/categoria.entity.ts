@@ -13,6 +13,5 @@ export class Categoria {
   descricao: string;
 
   @OneToMany(() => Produto, (produto) => produto.categoria)
-  @Exclude({ toPlainOnly: true })
   produtos: Produto[];
 }

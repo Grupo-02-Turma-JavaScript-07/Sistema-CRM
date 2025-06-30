@@ -29,5 +29,6 @@ export class Usuario {
   perfil: Perfil;
 
   @OneToMany(() => Produto, (produto) => produto.usuario)
+  @Exclude({ toPlainOnly: true })
   produtos: Produto[];
 }

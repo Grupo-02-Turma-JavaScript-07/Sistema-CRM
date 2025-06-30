@@ -44,7 +44,7 @@ export class UsuarioService {
   }
 
   async findByName(nome: string): Promise<Usuario[]> {
-    return this.usuarioRepository.find({
+    return await this.usuarioRepository.find({
       where: {
         nome: ILike(`%${nome}%`),
       },
@@ -58,7 +58,7 @@ export class UsuarioService {
     const perfisValidos = Object.values(Perfil);
     const perfil = usuario.perfil;
 
-    const usuarioBusca = this.usuarioRepository.findOne({
+    const usuarioBusca = await this.usuarioRepository.findOne({
       where: {
         email: usuario.email
       }
