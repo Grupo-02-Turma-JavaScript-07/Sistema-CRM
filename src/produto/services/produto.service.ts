@@ -87,6 +87,18 @@ export class ProdutoService {
         );
       }
 
+      const produtoBusca = await this.produtoRepository.findOne({
+        where: {
+          nome: produto.nome
+        }
+      });
+  
+      if (produtoBusca != null) {
+        throw new BadRequestException(
+          `Produto já existe.`,
+        );
+      }
+
       produto.categoria = categoria;
     }
 

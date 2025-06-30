@@ -58,6 +58,18 @@ export class UsuarioService {
     const perfisValidos = Object.values(Perfil);
     const perfil = usuario.perfil;
 
+    const usuarioBusca = this.usuarioRepository.findOne({
+      where: {
+        email: usuario.email
+      }
+    });
+
+    if (usuarioBusca != null) {
+      throw new BadRequestException(
+        `Usuário já existe.`,
+      );
+    }
+
     if (!perfisValidos.includes(perfil)) {
       throw new BadRequestException(
         `Perfil inválido. Os perfis devem ser: ${perfisValidos.join(', ')}`,
