@@ -1,4 +1,3 @@
-
 # 📊 FLOW CRM - Sistema de Gerenciamento Comercial
 
 Projeto desenvolvido pelo **Grupo 2** para o desafio prático da Generation Brasil, com o objetivo de criar um sistema CRM para gestão de usuários, categorias e produtos.
@@ -22,7 +21,6 @@ O projeto segue boas práticas de desenvolvimento com NestJS e integração com 
 ---
 
 ## 🔗 3. Diagrama Entidade-Relacionamento:
-
 
 ```mermaid
 classDiagram
@@ -102,13 +100,32 @@ Todos os endpoints foram testados utilizando o **Insomnia**, garantindo o funcio
 
 ---
 
-## 📄 8. Considerações Finais
+## 🚀 8. Como Executar o Projeto
+
+### Pré-requisitos
+- Node.js instalado
+- MySQL rodando
+- Arquivo `app.module` configurado corretamente com as credenciais do banco
+
+### Passos
+
+```bash
+# Instale as dependências
+npm install
+
+# Rode o projeto em modo desenvolvimento
+npm run start:dev
+```
+
+---
+
+## 📄 9. Considerações Finais
 
 O projeto foi desenvolvido como parte do desafio prático da Generation Brasil, aplicando conhecimentos de APIs REST, banco de dados, versionamento com Git e desenvolvimento em equipe.
 
 ---
 
-## 👤 9. Sobre
+## 👤 10. Sobre
 
 Projeto desenvolvido por  
 
