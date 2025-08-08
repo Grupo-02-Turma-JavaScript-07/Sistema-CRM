@@ -1,6 +1,6 @@
 export enum Perfil {
-  ADMIN = 'ADMIN',
-  GERENTE = 'GERENTE',
-  VENDEDOR = 'VENDEDOR',
-  CLIENTE = 'CLIENTE',
+  GRATUITO = 'GRATUITO',
+  BÁSICO = 'BÁSICO',
+  PRÓ = 'PRÓ',
+  PROFISSIONAL = 'PROFISSIONAL',
 }
