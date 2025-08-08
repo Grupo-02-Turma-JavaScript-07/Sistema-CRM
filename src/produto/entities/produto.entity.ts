@@ -1,4 +1,6 @@
 import { IsNotEmpty, IsNumber, Min } from 'class-validator';
+import { Categoria } from 'src/categoria/entities/categoria.entity';
+import { Usuario } from 'src/usuario/entities/usuario.entity';
 import {
   Column,
   Entity,
@@ -6,8 +8,6 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Usuario } from 'src/usuario/entities/usuario.entity';
-import { Categoria } from 'src/categoria/entities/categoria.entity';
 
 @Entity('tb_produtos')
 export class Produto {
@@ -31,6 +31,10 @@ export class Produto {
   @Min(0)
   @Column({ type: 'bigint', nullable: false })
   quantidade: number;
+
+  @IsNotEmpty()
+  @Column({ length: 255, nullable: true })
+  foto: string;
 
   @ManyToOne(() => Usuario, (usuario) => usuario.produtos, {
     onDelete: 'CASCADE',
