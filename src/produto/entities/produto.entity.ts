@@ -32,7 +32,6 @@ export class Produto {
   @Column({ type: 'bigint', nullable: false })
   quantidade: number;
 
-  @IsNotEmpty()
   @Column({ length: 255, nullable: true })
   foto: string;
 
